@@ -61,7 +61,7 @@ func TestLogGet(t *testing.T) {
 	c := &testingRequest{
 		method:     http.MethodGet,
 		url:        url,
-		credential: nonSysAdmin,
+		credential: projGuest,
 		queryStruct: struct {
 			Username       string `url:"username"`
 			Repository     string `url:"repository"`

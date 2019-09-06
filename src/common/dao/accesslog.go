@@ -66,7 +66,7 @@ func logQueryConditions(query *models.LogQueryParam) orm.QuerySeter {
 		return qs
 	}
 
-	if len(query.ProjectIDs) > 0 {
+	if len(query.ProjectIDs) != 0 {
 		qs = qs.Filter("project_id__in", query.ProjectIDs)
 	}
 	if len(query.Username) != 0 {

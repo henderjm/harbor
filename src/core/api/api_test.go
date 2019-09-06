@@ -51,6 +51,10 @@ var (
 		Name:   "admin",
 		Passwd: "Harbor12345",
 	}
+	nonUser = &usrInfo{
+		Name:   "nonUser",
+		Passwd: "nonUserPassword",
+	}
 	nonSysAdmin = &usrInfo{
 		Name:   "non_admin",
 		Passwd: "Harbor12345",

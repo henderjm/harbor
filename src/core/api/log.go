@@ -16,6 +16,7 @@ package api
 
 import (
 	"fmt"
+	"github.com/goharbor/harbor/src/common"
 
 	"errors"
 	"github.com/goharbor/harbor/src/common/dao"
@@ -96,7 +97,13 @@ func (l *LogAPI) Get() {
 
 		ids := []int64{}
 		for _, project := range projects {
-			ids = append(ids, project.ProjectID)
+			roles := l.SecurityCtx.GetProjectRoles(project.ProjectID)
+			fmt.Println(roles)
+			if roles[0] == common.RoleGuest {
+				fmt.Println("user does not have access to logs as role `guest`")
+			} else {
+				ids = append(ids, project.ProjectID)
+			}
 		}
 		query.ProjectIDs = ids
 	}
